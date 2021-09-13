@@ -19,32 +19,30 @@ Research Interests
 
 Education
 ======
+* **University of Alberta**, Edmonton, Canada
+  * M.Sc, Computer Science, 2021 - 2024 (expected)
+  * GPA: **-**/4
 * **Amirkabir University of Technology** (Tehran Polytechnic), Tehran, Iran
-  * B.Sc, Computer Engineering, 2016 - 2020 (expected)
+  * B.Sc, Computer Engineering, 2016 - 2021
   * Advisor: Prof. Saeedeh Momtazi
   * Bachelor’s Thesis: ”Implementation of a Persian Fake News Detection System and a Fake News Crawler Tool”.
-  * GPA: **3.86**/4 ≃ **18.06**/20
-  
-* **Mofid High School**, Tehran, Iran
-  * High School Diploma in Mathematics and Physics, 2012 - 2016
-  * GPA: **19.67** / 20
+  * GPA: **3.86**/4 ≃ **18.02**/20
 
-Publications
+Publications and Preprints
 ======
- * Kavehzadeh, P. **Samadi, M.** and Amir Haeri, M. “Unsupervised Anomaly Detection on Node Attributed Networks: A Deep Learning Approach.”, International Conference on Information Science and Systems (ICISS 2021) (**accepted**), to be published in ACM’s International Conference Proceedings Series (ICPS).
- * **Samadi, M.** and Momtazi, S. “Fake News Detection: Deep Semantic Representation with Topic and Entity Enhanced Feature Engineering.”, Information Processing & Management (to be submitted), January 2021.
- * **Samadi, M.** and Momtazi, S. “Multi-Channel Convolutional Neural Networks for Detecting COVID-19 Fake News.”, Applied Soft Computing (under review), December 2020.
- * **Samadi, M.** Mousavian, M. and Momtazi, S. “Deep Contextualized Text Representation and Learning for Fake News Detection.”, Information Processing & Management (under review), October 2020.
- * **Samadi, M.** Mousavian, M. and Momtazi, S. “Persian Fake News Detection: a Deep Neural Representation and Deep Neural Learning Approach.”, ACM Transactions on Asian and Low-Resource Language Information Processing (under review), September 2020.
- * **Samadi, M.**, “Question Recommendation System Based on the Pair Similarity.”, Technical Report [View](https://drive.google.com/file/d/1CZT2KJm1mhqPPNRv_CKdF9WBTAT9ErZY/view?usp=sharing), September 2019.
+ * [Kavehzadeh, P. **Samadi, M.** and Amir Haeri, M. “Unsupervised Anomaly Detection on Node Attributed Networks: A Deep Learning Approach.”, International Conference on Information Science and Systems (ICISS 2021), ACM’s International Conference Proceedings Series (ICPS)](https://dl.acm.org/doi/abs/10.1145/3459955.3460597)
+* [**Samadi, M.** Mousavian, M. and Momtazi, S. “Deep Contextualized Text Representation and Learning for Fake News Detection.”, Information Processing & Management](#)
+* [**Samadi, M.** Mousavian, M. and Momtazi, S. “Persian Fake News Detection: a Deep Neural Representation and Deep Neural Learning Approach.”, ACM Transactions on Asian and Low-Resource Language Information Processing](#)
+ * **Samadi, M.** and Momtazi, S. “Fake News Detection: Deep Semantic Representation with Enhanced Feature Engineering”, JDSA (submitted), August 2021.
+ * **Samadi, M.** and Momtazi, S. “Multi-Channel Convolutional Neural Networks for Detecting COVID-19 Fake News.”, Applied Soft Computing (under review), December 2020
 
 Research and Work Experience
 ======
-* **Fake News Detection System**, *Bachelor’s Thesis* (April 2020 - present) <br/>
+* **Fake News Detection System**, *Bachelor’s Thesis* (April 2020 - July 2021) <br/>
   Implemented a Persian fake news detection system using state-of-the-art architectures such as BERT for sentence embedding and Convolutional neural
 networks for text classification. Also, a Persian fake news crawler was developed for scraping fake news from Persian news agencies websites - Python
 
-* **Anomaly Detection in Graph** (September 2020 - present) <br/>
+* **Anomaly Detection in Graph** (September 2020 - December 2020) <br/>
   Research on anomaly detection on graph data using variational autoencoders
   (VAE). In this study, nodes of the graph were represented by features vectors
   extracted with different graph embedding algorithm, and our proposed model
