@@ -9,7 +9,7 @@ redirect_from:
 ---
 
 
-I am a M.Sc. student in Cumputing Science department of the University of Alberta (UoA), highly interested in natural language processing (NLP), anomaly detection, and machine learning. To view or download the latest version of my CV, [click here](https://drive.google.com/file/d/1vwZcGsOM1sSucussN_9AGPMYL3Sq1wpM/view?usp=sharing).
+I am a M.Sc. student in Cumputing Science department of the University of Alberta (UoA), highly interested in natural language processing (NLP), anomaly detection, and machine learning. To view or download the latest version of my CV, [click here](https://drive.google.com/file/d/1-i13GVhy39IhYfuP0TizRLFJkhqkat3e/view?usp=sharing).
 
 # Notable Research Experiences
 
