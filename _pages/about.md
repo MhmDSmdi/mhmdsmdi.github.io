@@ -16,7 +16,7 @@ I am a M.Sc. student in Cumputing Science department of the University of Albert
 * **Fake News Detection** <br/>
 My bachelor's thesis was about "fake news detection" in Persian under the supervision of [Prof. Momtazi](https://aut.ac.ir/cv/2345/Saeede%20Momtazi).
 In this study, I was in charge of implementing a fake news detection system as a fact-checker for Persian news. With this aim, I proposed a 5-step procedure for crawling fake news, and implemented a scraper based on this procedure from Persian news agencies' websites. Furthermore, we proposed different models based on deep pre-trained contextualized models such as BERT, RoBERTa, XLM, Funnel Transformer, and GPT2 for detecting fake news accurately. Moreover, we proposed different architectures like Multi-Channel Convolutional Neural Networks for detecting misinformation in social media, specifically in the COVID-19 pandemic.
-  * [Deep contextualized text representation and learning for fake news detection](#)
+  * [Deep contextualized text representation and learning for fake news detection](https://www.sciencedirect.com/science/article/abs/pii/S0306457321002077)
   * [Persian Fake News Detection: a Deep Neural Representation and Deep Neural Learning Approach](#)
 
 * **Anomaly Detection in Attributed Graphs** <br/>
