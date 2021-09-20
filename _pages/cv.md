@@ -31,7 +31,7 @@ Education
 Publications and Preprints
 ======
  * [Kavehzadeh, P. **Samadi, M.** and Amir Haeri, M. “Unsupervised Anomaly Detection on Node Attributed Networks: A Deep Learning Approach.”, International Conference on Information Science and Systems (ICISS 2021), ACM’s International Conference Proceedings Series (ICPS)](https://dl.acm.org/doi/abs/10.1145/3459955.3460597)
-* [**Samadi, M.** Mousavian, M. and Momtazi, S. “Deep Contextualized Text Representation and Learning for Fake News Detection.”, Information Processing & Management](#)
+* [**Samadi, M.** Mousavian, M. and Momtazi, S. “Deep Contextualized Text Representation and Learning for Fake News Detection.”, Information Processing & Management](https://www.sciencedirect.com/science/article/abs/pii/S0306457321002077)
 * [**Samadi, M.** Mousavian, M. and Momtazi, S. “Persian Fake News Detection: a Deep Neural Representation and Deep Neural Learning Approach.”, ACM Transactions on Asian and Low-Resource Language Information Processing](#)
  * **Samadi, M.** and Momtazi, S. “Fake News Detection: Deep Semantic Representation with Enhanced Feature Engineering”, JDSA (submitted), August 2021.
  * **Samadi, M.** and Momtazi, S. “Multi-Channel Convolutional Neural Networks for Detecting COVID-19 Fake News.”, Applied Soft Computing (under review), December 2020
