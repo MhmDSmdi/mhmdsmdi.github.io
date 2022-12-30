@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='#'>M.Sc.</a>. University of Alberta.
+subtitle: <a href='#'>M.Sc. Student</a> | Department of Computing Science, University of Alberta
 
 profile:
   align: right
