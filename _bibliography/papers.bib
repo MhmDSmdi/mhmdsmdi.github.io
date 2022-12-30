@@ -11,7 +11,8 @@
   year={2021},
   publisher={Elsevier},
   selected={true},
-  preview={deep.jpg}
+  preview={deep.jpg},
+  abstract={In recent years, due to the widespread use of social media and broadcasting agencies around the world, people are extremely exposed to being affected by false information and fake news, all of which have negative impacts on both collective thoughts and governments’ policies. In recent years, the great success of pre-trained models for embedding contextual information from texts motivates researchers to utilize these embeddings in different natural language processing tasks. However, in a complex task like fake news detection, it is not determined which contextualized embedding can assist the classifier with more valuable features. Due to the lack of a comparative study about utilizing different contextualized pre-trained models besides distinct neural classifiers, we aim to dive into a comparative study about using different classifiers and embedding models. In this paper, we propose three classifiers with different pre-trained models for embedding input news articles. We connect Single-Layer Perceptron (SLP), Multi-Layer Perceptron (MLP), and Convolutional Neural Network (CNN) after the embedding layer which consists of novel pre-trained models such as BERT, RoBERTa, GPT2, and Funnel Transformer in order to benefit from deep contextualized representation provided by those models as well as deep neural classifications. We evaluate our proposed models on three well-known fake news datasets: LIAR (Wang, 2017), ISOT (Ahmed et al., 2017), and COVID-19 Patwa et al. (2020). The results on these three datasets show the superiority of our proposed models for fake news detection compared to the state-of-the-art models. The results show 7% and 0.1% improvements in classification accuracy compared to the proposed model by Goldani et al. (2021) on LIAR and ISOT, respectively. We also achieved 1% improvement compared to the proposed model by Shifath et al. (2021) on the COVID-19 dataset.},
 }
 
 @article{samadi2021persian,
@@ -23,7 +24,8 @@
   pages={1--11},
   year={2021},
   publisher={ACM New York, NY},
-  preview={persian.png}
+  preview={persian.png},
+  abstract={Nowadays, broadcasting news on social media and websites has grown at a swifter pace, which has had negative impacts on both the general public and governments; hence, this has urged us to build a fake news detection system. Contextualized word embeddings have achieved great success in recent years due to their power to embed both syntactic and semantic features of textual contents. In this article, we aim to address the problem of the lack of fake news datasets in Persian by introducing a new dataset crawled from different news agencies, and propose two deep models based on the Bidirectional Encoder Representations from Transformers model (BERT), which is a deep contextualized pre-trained model for extracting valuable features. In our proposed models, we benefit from two different settings of BERT, namely pool-based representation, which provides a representation for the whole document, and sequence representation, which provides a representation for each token of the document. In the former one, we connect a Single Layer Perceptron (SLP) to the BERT to use the embedding directly for detecting fake news. The latter one uses Convolutional Neural Network (CNN) after the BERT’s embedding layer to extract extra features based on the collocation of words in a corpus. Furthermore, we present the TAJ dataset, which is a new Persian fake news dataset crawled from news agencies’ websites. We evaluate our proposed models on the newly provided TAJ dataset as well as the two different Persian rumor datasets as baselines. The results indicate the effectiveness of using deep contextualized embedding approaches for the fake news detection task. We also show that both BERT-SLP and BERT-CNN models achieve superior performance to the previous baselines and traditional machine learning models, with 15.58% and 17.1% improvement compared to the reported results by Zamani et al. [30], and 11.29% and 11.18% improvement compared to the reported results by Jahanbakhsh-Nagadeh et al. [9].}
 }
 
 @article{samadi2022multichannel,
@@ -31,7 +33,8 @@
   author={Samadi, Mohammadreza and Momtazi, Saeedeh},
   journal={Digital Scholarship in the Humanities},
   year={2022},
-  preview={multi.png}
+  preview={multi.png},
+  abstract={By the outbreak of COVID-19, started in late 2019, people have been exposed to false information that not only made them confused about the scientific aspects of this virus but also endangered their life. This makes fake news detection a critical issue in social media. In this paper, we introduce a Convolutional Neural Network (CNN)-based model for detecting fake news spread in social media. Considering the complexity of the fake news detection task, various features from different aspects of news articles should be captured. To this aim, we propose a multi-channel CNN model that uses three distinct embedding channels: (1) contextualized text representation models, (2) static word embeddings, and (3) lexical embeddings, all of which assist the classifier to detect fake news more accurately. Our experimental results on the COVID-19 fake news dataset (Patwa et al., 2020) shows that the CNN model with contextualized text representation improves the performance of the task by 2.96% compared to the reported results by Patwa et al. (2020). Moreover, our proposed three-channel CNN further improved the results by 0.56 % and 1.32 % on the validation and test data, respectively.}
 }
 
 @inproceedings{kavehzadeh2021unsupervised,
@@ -40,5 +43,6 @@
   booktitle={2021 The 4th International Conference on Information Science and Systems},
   pages={35--40},
   year={2021},
-  preview={unsupervised.png}
+  preview={unsupervised.png},
+  abstract={Anomaly detection has been one of the important issues in social network analysis in recent years due to the crucial role it plays in different applications such as fraud and spammer detection. Using both graph and node characteristics leads to more accurate results in detecting anomalous nodes of node attributed networks. Most of the research works in this field are concentrated on supervised methods for anomaly detection. However, in real-world problems, there is not enough labeled data to use supervised methods for anomaly detection. This paper proposes an unsupervised method for detecting anomalous nodes in node attributed networks. The methods used a two-step deep learning approach. In the first step, structural features of the network are extracted using node2vec; in the next step, Variational AutoEncoder (VAE) is used to detect the anomalies considering both structural and node attributes. The anomalous nodes are recognized by their higher reconstruction loss. Our experimental results on two datasets, BlogCatalog and Flickr, show that the suggested method can compete with the state-of-the-art approaches of anomaly detection in attributed networks. Our method (Deep2NAD) outperforms the state-of-the-art result on the Flickr dataset based on AUC. Moreover, it receives an acceptable AUC over the BlogCatalog dataset in comparison to the state-of-the-art methods.}
 }
