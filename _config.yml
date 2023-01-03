@@ -16,7 +16,7 @@ footer_text: >
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website  # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: 💻  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: 📃  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://mhmdsmdi.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/
@@ -69,7 +69,7 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 
 github_username: MhmDSmdi # your GitHub user name
 gitlab_username: # your GitLab user name
-twitter_username: # your Twitter handle
+twitter_username: Mhmd_Smdi# your Twitter handle
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 linkedin_username: mhmd-smdi # your LinkedIn user name
 telegram_username: # your Telegram user name
