@@ -21,8 +21,6 @@ Before joining Huawei, I worked as a Machine Learning intern at the Alberta Mach
 
 I hold an M.Sc. in Computing Science from the University of Alberta, where I was advised by [Prof. Davood Rafiei](https://webdocs.cs.ualberta.ca/~drafiei/). My research focused on Natural Language Processing and Information Retrieval, particularly on query performance prediction in multi-hop question answering. Prior to that, I completed my Bachelor’s in Computer Engineering at Amirkabir University of Technology (Tehran Polytechnic), where I developed a fake news detection system for Persian news under the guidance of [Prof. Saeede Momtazi](https://aut.ac.ir/cv/2345/Saeede%20Momtazi).
 
-For more details, please see my [CV](https://drive.google.com/file/d/13CM4jmm1uN8ygHMu0t3ZgmhNzujJkRIn/view?usp=sharing).
-
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
