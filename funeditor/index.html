@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Achieving Complex Image Edits via Function Aggregation with Diffusion Models.">
+  <meta name="keywords" content="FunEditor, Complex Edits, Function Aggregation, Diffusion Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FunEditor: Achieving Complex Image Edits via Function Aggregation with Diffusion Models</title>
+  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <!-- icon -->
+  <!-- <link rel="icon" href="https://huggingface.co/front/assets/huggingface_logo.svg"> -->
+  <link rel="icon" type="image/png" sizes="32x32" href="static/images/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/images/icon/favicon-16x16.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">&#127912;&nbsp;FunEditor: Achieving Complex Image Edits via Function Aggregation with Diffusion Models</h1>
+          <div class="is-size-5 publication-authors">
+
+            <!-- First Line -->
+            <div style="display: inline;">
+              <span class="author-block">
+                <a href="#">Mohammadreza Samadi</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Fred X. Han</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Mohammad Salameh</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Hao Wu</a><sup>3</sup>,
+              </span>
+            </div>
+          
+            <!-- Second Line -->
+            <br>
+            <div style="display: inline;">
+              <span class="author-block">
+                <a href="#">Fengyu Sun</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Chunhua Zhou</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Di Niu</a><sup>2</sup>
+              </span>
+            </div>
+          
+          </div>
+          
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Huawei Technologies Canada,</span>
+            <span class="author-block"><sup>2</sup>University of Alberta,</span>
+            <span class="author-block"><sup>3</sup>Huawei Kirin Solution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2408.08495"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- HF Demo Link. -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <img src="https://huggingface.co/front/assets/huggingface_logo.svg" alt="Hugging Face Logo" style="width: 1em; height: 1em;">
+                  </span>
+                  <span>Demo (coming soon)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Demo -->
+<section class="section" style="background-color: white; padding: 30px 0;">
+  <div class="container is-max-desktop">
+    <!-- Centered Image and Caption -->
+    <div class="columns is-centered">
+      <figure style="width: 800px; margin: auto; background-color: white;">
+        <img src="static/images/demo.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
+        <figcaption class="content has-text-justified">
+          Our method efficiently performs complex image editing tasks such as object movement, resizing, and pasting in just <strong>4 steps</strong> by composing and applying multiple functions simultaneously. Key functions include object removal (\(f_{OR}\)), edge enhancement (\(f_{EE}\)), and harmonization (\(f_{HR}\)), each applied exclusively to specified mask regions for precise edits. The source image \(I\) is omitted from function arguments for simplicity in the demo visualization.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Diffusion models have shown exceptional performance in generative tasks, making them suitable for image editing.
+            Recent research highlights their ability to apply edits based on textual instructions, but two key challenges persist.
+            First, these models struggle to perform multiple edits simultaneously, causing computational inefficiencies due to sequential processing.
+            Second, using textual prompts to specify editing regions can result in unintended changes to the image.
+          </p>
+          <p>
+            We introduce FunEditor, <strong>an efficient diffusion model designed to learn basic editing functions and combine them to perform complex edits.</strong>
+            This method allows tasks like object movement by merging multiple functions and applying them simultaneously to designated areas.
+            Our experiments show that FunEditor significantly outperforms recent inference-time optimization techniques and fine-tuned models, both quantitatively across various metrics and through visual comparisons, on complex tasks like object movement and object pasting.
+            Moreover, with only four inference steps, <strong>FunEditor achieves a 5-24x speedup</strong> compared to existing popular methods. Codes and datasets are available online.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Overview -->
+<section class="section" style="background-color: white; padding: 30px 0;">
+  <div class="container is-max-desktop">
+    <!-- Centered Title -->
+    <div class="columns is-centered">
+      <div style="text-align: center; width: 100%; margin-bottom: 20px;">
+        <h2 class="title is-3">Method Overview</h2>
+      </div>
+    </div>
+
+    <!-- Centered Image and Caption -->
+    <div class="columns is-centered">
+      <figure style="width: 800px; margin: auto; background-color: white;">
+        <img src="static/images/overview.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
+        <figcaption class="content has-text-justified">
+          During the basic task training phase (a), the diffusion model learns to perform various simple tasks based on the provided task tokens and masks.
+          During inference (b), we could implement complex edit functions by combining multiple task masks and tokens.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- Comparison with baselines -->
+<section class="section hero is-light" style="padding: 30px 0;">
+  <div class="container is-max-desktop">
+    <!-- Centered Title -->
+    <div class="columns is-centered">
+      <div style="text-align: center; width: 100%; margin-bottom: 30px;">
+        <h2 class="title is-3">Comparison To Current Methods</h2>
+      </div>
+    </div>
+
+    <!-- Centered Image and Caption -->
+    <div class="columns is-centered">
+      <figure style="width: 800px; margin: 0; padding: 0;">
+        <h2 class="title is-6" style="margin-bottom: 5px;">Complex Task 1: Object Movement</h2>
+        <img src="static/images/comparison_results1.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin-bottom: 15px;">
+        
+        <h2 class="title is-6" style="margin-bottom: 5px;">Complex Task 2: Object Placement</h2>
+        <img src="static/images/comparison_results2.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin-bottom: 15px;">
+        
+        <figcaption class="content has-text-justified" style="margin-top: 15px;">
+          Qualitative and visual comparison between our approach and baseline methods for object placement, repositioning, and pasting tasks. Our method demonstrates superior performance by composing functions such as object removal, harmonization, and edge enhancement. FunEditor seamlessly pastes objects from a reference image into a target image while ensuring proper integration and realistic appearance.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Results Table Section -->
+<section class="section" style="background-color: white; padding: 30px 0;">
+  <div class="container is-max-desktop">
+
+    <!-- Section Title -->
+    <div class="columns is-centered" style="margin-bottom: 30px;">
+      <h2 class="title is-3" style="text-align: center;">Quantitative Results</h2>
+    </div>
+
+    <!-- First Table Image with Title -->
+    <div class="columns is-centered" style="width: 800px; margin: auto; margin-bottom: 10px;">
+      <h2 class="title is-6" style="margin: 0; text-align: left;">COCOE Dataset</h2>
+    </div>
+    <div class="columns is-centered" style="margin-bottom: 20px;">
+      <figure style="width: 800px; margin: auto;">
+        <img src="static/images/quantitative_comp1.png" alt="Results Table 1" style="width: 100%; height: auto;">
+      </figure>
+    </div>
+
+    <!-- Second Table Image with Title -->
+    <div class="columns is-centered" style="width: 800px; margin: auto; margin-bottom: 10px;">
+      <h2 class="title is-6" style="margin: 0; text-align: left;">ReS Dataset</h2>
+    </div>
+    <div class="columns is-centered" style="margin-bottom: 20px;">
+      <figure style="width: 800px; margin: auto;">
+        <img src="static/images/quantitative_comp2.png" alt="Results Table 2" style="width: 100%; height: auto;">
+      </figure>
+    </div>
+
+    <!-- Merged Caption -->
+    <div class="columns is-centered" style="width: 800px; margin: auto;">
+      <figcaption class="content has-text-left" style="text-align: left;">
+        Quantitative evaluation of our approach compared to the baselines on the object movement task using the COCOEE and ReS datasets.
+      </figcaption>
+    </div>
+
+  </div>
+</section>
+
+<!-- Efficiency Comparison -->
+<section class="section hero is-light" style="padding: 30px 0;">
+  <div class="container is-max-desktop">
+    <!-- Centered Title -->
+    <div class="columns is-centered">
+      <div style="text-align: center; width: 100%; margin-bottom: 20px;">
+        <h2 class="title is-3">Efficiency Comparison</h2>
+      </div>
+    </div>
+
+    <!-- Centered Image and Caption -->
+    <div class="columns is-centered">
+      <figure style="width: 600px; margin: auto;">
+        <img src="static/images/efficiency_comp.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
+        <figcaption class="content has-text-justified">
+          Efficiency is compared in terms of the number of function evaluations (NFEs) and latency (seconds).
+          Latency is measured as the average wall-clock time for editing one image over 10 runs on a single Nvidia V100 (32GB) GPU.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{samadi2024achieving,
+      title={Achieving Complex Image Edits via Function Aggregation with Diffusion Models},
+      author={Samadi, Mohammadreza and Han, Fred X and Salameh, Mohammad and Wu, Hao and Sun, Fengyu and Zhou, Chunhua and Niu, Di},
+      journal={arXiv preprint arXiv:2408.08495},
+      year={2024}
+    }
+  </code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/">Nerfies</a> project page.
+            If you want to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
