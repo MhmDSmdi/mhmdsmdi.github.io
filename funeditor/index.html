@@ -44,6 +44,131 @@
 </head>
 <body>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  
+    // Image Pairs for Object Movement
+    const imagePairsMovement = [
+      { input: "static/images/movement/1_0.png", output: "static/images/movement/1_1.png" },
+      { input: "static/images/movement/3_0.png", output: "static/images/movement/3_1.png" },
+      { input: "static/images/movement/2_0.png", output: "static/images/movement/2_1.png" },
+      { input: "static/images/movement/4_0.png", output: "static/images/movement/4_1.png" },
+      { input: "static/images/movement/5_0.png", output: "static/images/movement/5_1.png" },
+    ];
+  
+    // Image Pairs for Resizing
+    const imagePairsResizing = [
+      { input: "static/images/resizing/1_0.png", enlarge: "static/images/resizing/1_1.png", shrink: "static/images/resizing/1_2.png" },
+      { input: "static/images/resizing/2_0.png", enlarge: "static/images/resizing/2_1.png", shrink: "static/images/resizing/2_2.png" },
+      { input: "static/images/resizing/4_0.png", enlarge: "static/images/resizing/4_1.png", shrink: "static/images/resizing/4_2.png" },
+      { input: "static/images/resizing/3_0.png", enlarge: "static/images/resizing/3_1.png", shrink: "static/images/resizing/3_2.png" },
+      { input: "static/images/resizing/5_0.png", enlarge: "static/images/resizing/5_1.png", shrink: "static/images/resizing/5_2.png" },
+    ];
+  
+    // Create Image Grid
+    function createImageGrid(containerSelector, imagePairs, prefix, isMovement = false) {
+      const container = document.querySelector(containerSelector);
+  
+      imagePairs.forEach((pair, idx) => {
+        const imageContainer = document.createElement("div");
+        imageContainer.className = "column is-one-fifth image-container";
+        imageContainer.style = "position: relative; width: 20%; padding: 5px;";
+        if (isMovement) {
+          // Object Movement Grid
+          imageContainer.innerHTML = `
+            <div class="image-wrapper" style="position: relative; width: 100%; padding-top: 100%; overflow: hidden; border-radius: 8px;">
+              <img src="${pair.input}" alt="Input Image" class="${prefix}-input-image-${idx}" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 0.3s ease-in-out;">
+              <img src="${pair.output}" alt="Output Image" class="${prefix}-output-image-${idx}" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease-in-out;">
+            </div>
+          `;
+  
+          container.appendChild(imageContainer);
+  
+          // Hover Event for Movement
+          imageContainer.addEventListener("mouseover", () => {
+            document.querySelector(`.${prefix}-input-image-${idx}`).style.opacity = "0";   // Hide input
+            document.querySelector(`.${prefix}-output-image-${idx}`).style.opacity = "1"; // Show output
+          });
+  
+          imageContainer.addEventListener("mouseout", () => {
+            document.querySelector(`.${prefix}-input-image-${idx}`).style.opacity = "1";   // Show input
+            document.querySelector(`.${prefix}-output-image-${idx}`).style.opacity = "0"; // Hide output
+          });
+  
+        } else {
+          // Object Resizing Grid
+          imageContainer.innerHTML = `
+            <div class="image-wrapper" style="position: relative; width: 100%; padding-top: 100%; overflow: hidden; border-radius: 8px;">
+              <img src="${pair.input}" alt="Input Image" class="${prefix}-input-image-${idx}" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 0.3s ease-in-out;">
+              <img src="${pair.enlarge}" alt="Enlarged Image" class="${prefix}-enlarged-image-${idx}" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease-in-out;">
+              <img src="${pair.shrink}" alt="Shrunk Image" class="${prefix}-shrunk-image-${idx}" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease-in-out;">
+            </div>
+          `;
+  
+          container.appendChild(imageContainer);
+  
+          let isClicked = false;
+  
+          // Hover Event for Enlarging
+          imageContainer.addEventListener("mouseover", () => {
+            if (!isClicked) {
+              document.querySelector(`.${prefix}-input-image-${idx}`).style.opacity = "0";   // Hide input
+              document.querySelector(`.${prefix}-enlarged-image-${idx}`).style.opacity = "1"; // Show enlarged
+            }
+          });
+  
+          // Mouse Leave Event to Reset
+          imageContainer.addEventListener("mouseout", () => {
+            if (!isClicked) {
+              document.querySelector(`.${prefix}-input-image-${idx}`).style.opacity = "1";   // Show input
+              document.querySelector(`.${prefix}-enlarged-image-${idx}`).style.opacity = "0"; // Hide enlarged
+            }
+          });
+  
+          // Click Event for Shrinking
+          imageContainer.addEventListener("click", () => {
+            const inputImage = document.querySelector(`.${prefix}-input-image-${idx}`);
+            const enlargedImage = document.querySelector(`.${prefix}-enlarged-image-${idx}`);
+            const shrunkImage = document.querySelector(`.${prefix}-shrunk-image-${idx}`);
+  
+            if (isClicked) {
+              inputImage.style.opacity = "0";   // Show input
+              enlargedImage.style.opacity = "1"; // Hide enlarged
+              shrunkImage.style.opacity = "0";  // Hide shrunk
+              isClicked = false;
+            } else {
+              inputImage.style.opacity = "0";   // Hide input
+              enlargedImage.style.opacity = "0"; // Hide enlarged
+              shrunkImage.style.opacity = "1";  // Show shrunk
+              isClicked = true;
+            }
+          });
+  
+          // Reset to Default After Mouse Leave if Clicked
+          imageContainer.addEventListener("mouseleave", () => {
+            if (isClicked) {
+              document.querySelector(`.${prefix}-input-image-${idx}`).style.opacity = "1";   // Show input
+              document.querySelector(`.${prefix}-enlarged-image-${idx}`).style.opacity = "0"; // Hide enlarged
+              document.querySelector(`.${prefix}-shrunk-image-${idx}`).style.opacity = "0";  // Hide shrunk
+              isClicked = false;
+            }
+          });
+        }
+      });
+    }
+  
+    // Create Object Movement Grid
+    createImageGrid(".movement-grid", imagePairsMovement, "movement", true);
+    // Create Object Resizing Grid
+    createImageGrid(".resizing-grid", imagePairsResizing, "resizing", false);
+  });
+  </script>
+
 
 <section class="hero">
   <div class="hero-body">
@@ -167,6 +292,10 @@
             Moreover, with only four inference steps, <strong>FunEditor achieves a 5-24x speedup</strong> compared to existing popular methods. Codes and datasets are available online.
           </p>
         </div>
+        <div class="columns is-multiline is-centered movement-grid" style="margin-bottom: 0;"></div>
+        <p class="title is-7" style="text-align: left;">Object Movement: Hover to Move</p>
+        <div class="columns is-multiline is-centered resizing-grid" style="margin-bottom: 0;"></div>
+        <p class="title is-7" style="text-align: left;">Object Resizing: Hover to Enlarge, Click to Shrink</p>
       </div>
     </div>
   </div>
