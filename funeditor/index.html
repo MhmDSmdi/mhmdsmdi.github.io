@@ -304,6 +304,7 @@
 <!-- Overview -->
 <section class="section" style="background-color: white; padding: 30px 0;">
   <div class="container is-max-desktop">
+
     <!-- Centered Title -->
     <div class="columns is-centered">
       <div style="text-align: center; width: 100%; margin-bottom: 20px;">
@@ -311,15 +312,29 @@
       </div>
     </div>
 
-    <!-- Centered Image and Caption -->
-    <div class="columns is-centered">
-      <figure style="width: 800px; margin: auto; background-color: white;">
-        <img src="static/images/overview.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
-        <figcaption class="content has-text-justified">
-          During the basic task training phase (a), the diffusion model learns to perform various simple tasks based on the provided task tokens and masks.
-          During inference (b), we could implement complex edit functions by combining multiple task masks and tokens.
-        </figcaption>
-      </figure>
+    <!-- Centered Image -->
+    <figure style="margin: auto; background-color: white;">
+      <img src="static/images/overview.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
+    </figure>
+
+    <!-- Side by Side Content -->
+    <div class="columns" style="margin-top: 10px;">
+
+      <!-- Training Content -->
+      <div class="column is-half has-text-justified">
+        <h3 class="title is-5">(a) Basic Task Training</h3>
+        <p><strong>Atomic Task Learning</strong>: FunEditor learns individual editing functions like object removal, edge enhancement, and harmonization by representing tasks with trainable tokens embedded in the text tokenizer, leveraging simple task-specific datasets to minimize data collection costs.</p>
+        <p><strong>Training Procedure</strong>: The training process involves a source image, target image, task tokens, and binary masks. Task tokens are activated randomly, and their positions are shuffled to enhance model robustness. Localized cross-attention masking ensures task-specific edits are confined to designated regions.</p>
+      </div>
+
+      <!-- Inference Content -->
+      <div class="column is-half has-text-justified">
+        <h3 class="title is-5">(b) Complex Task Inference</h3>
+        <p><strong>Task Token Aggregation</strong>: Multiple task tokens are combined during inference for complex edits. For instance, combining object removal and edge enhancement achieves object movement.</p>
+        <p><strong>Simultaneous Multi-Function Execution</strong>: Functions are executed simultaneously in a single inference pass, enabling efficient, high-quality edits while minimizing processing steps for faster results.</p>
+        <p><strong>Few-Step Inference & Localization Control</strong>: FunEditor applies edits in just four steps, delivering up to 24× speed improvements over conventional methods. Masks ensure precise, localized edits without unintended changes.</p>
+      </div>
+
     </div>
   </div>
 </section>
