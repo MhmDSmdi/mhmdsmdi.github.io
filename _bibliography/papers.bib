@@ -71,7 +71,7 @@
   title={PixelMan: Consistent Object Editing with Diffusion Models via Pixel Manipulation and Generation},
   author={Jiang, Liyao and Hassanpour, Negar and Salameh, Mohammad and Samadi, Mohammadreza and He, Jiao and Sun, Fengyu and Niu, Di},
   journal={The 39th Annual AAAI Conference on Artificial Intelligence},
-  year={2024},
+  year={2025},
   preview={pixel_man.png},
   abstract={Recent research explores the potential of Diffusion Models (DMs) for consistent object editing, which aims to modify object position, size, and composition, etc., while preserving the consistency of objects and background without changing their texture and attributes. Current inference-time methods often rely on DDIM inversion, which inherently compromises efficiency and the achievable consistency of edited images. Recent methods also utilize energy guidance which iteratively updates the predicted noise and can drive the latents away from the original image, resulting in distortions. In this paper, we propose PixelMan, an inversion-free and training-free method for achieving consistent object editing via Pixel Manipulation and generation, where we directly create a duplicate copy of the source object at target location in the pixel space, and introduce an efficient sampling approach to iteratively harmonize the manipulated object into the target location and inpaint its original location, while ensuring image consistency by anchoring the edited image to be generated to the pixel-manipulated image as well as by introducing various consistency-preserving optimization techniques during inference. Experimental evaluations based on benchmark datasets as well as extensive visual comparisons show that in as few as 16 inference steps, PixelMan outperforms a range of state-of-the-art training-based and training-free methods (usually requiring 50 steps) on multiple consistent object editing tasks.}
 }
@@ -80,7 +80,7 @@
   title={FunEditor: Achieving Complex Image Edits via Function Aggregation with Diffusion Models},
   author={Samadi, Mohammadreza and Han, Fred X and Salameh, Mohammad and Wu, Hao and Sun, Fengyu and Zhou, Chunhua and Niu, Di},
   journal={The 39th Annual AAAI Conference on Artificial Intelligence},
-  year={2024},
+  year={2025},
   selected={true},
   preview={fun_editor.png},
   abstract={Diffusion models have shown exceptional performance in generative tasks, making them suitable for image editing. Recent research highlights their ability to apply edits based on textual instructions, but two key challenges persist. First, these models struggle to perform multiple edits simultaneously, causing computational inefficiencies due to sequential processing. Second, using textual prompts to specify editing regions can result in unintended changes to the image. We introduce FunEditor, an efficient diffusion model designed to learn basic editing functions and combine them to perform complex edits. This method allows tasks like object movement by merging multiple functions and applying them simultaneously to designated areas. Our experiments show that FunEditor significantly outperforms recent inference-time optimization techniques and fine-tuned models, both quantitatively across various metrics and through visual comparisons, on complex tasks like object movement and object pasting. Moreover, with only four inference steps, FunEditor achieves a 5-24x speedup compared to existing popular methods. Codes and datasets are available online.}
