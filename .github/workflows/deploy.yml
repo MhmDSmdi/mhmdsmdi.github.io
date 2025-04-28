@@ -16,15 +16,27 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.1.0' # Updated Ruby version
+        ruby-version: '3.1.0' # Ruby version
         bundler-cache: true
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # Ensure a compatible Node.js version
+
+    - name: Install Dart Sass dependencies
+      run: sudo apt-get install -y dart
+
     - name: Update default gems
       run: gem update --system && gem install uri -v '1.0.3'
-    - name: Install deps
-      run: npm install -g mermaid.cli
+
+    - name: Install dependencies
+      run: bundle install
+
     - name: Setup deploy options
       id: setup
       run: |
@@ -37,6 +49,7 @@ jobs:
           echo "SRC_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
         fi
         echo "DEPLOY_BRANCH=gh-pages" >> $GITHUB_OUTPUT
+
     - name: Deploy website 
       run:  yes | bash bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
                     --src ${{ steps.setup.outputs.SRC_BRANCH }} 
