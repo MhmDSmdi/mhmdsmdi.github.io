@@ -1,56 +1,73 @@
 name: deploy
 
+# Builds the site with Jekyll and publishes it through GitHub Pages'
+# native Actions deployment. Nothing is force-pushed and there is no
+# `gh-pages` branch involved.
+#
+# ONE-TIME SETUP: Settings -> Pages -> "Build and deployment" -> Source
+# must be set to "GitHub Actions". Until that is changed, this workflow
+# will build successfully but fail at the deploy step.
+
 on:
   push:
     branches:
       - master
-      - main
   pull_request:
     branches:
       - master
-      - main
+  workflow_dispatch:
+
+# Least privilege: we no longer push to a branch, we hand an artifact to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; don't cancel a run that is mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.1.0' # Ruby version
-        bundler-cache: true
+      # jekyll-imagemagick shells out to `convert` to generate the
+      # responsive WebP variants under assets/img/.
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
 
-    - name: Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16' # Ensure a compatible Node.js version
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
 
-    - name: Install Dart Sass dependencies
-      run: sudo apt-get install -y dart
+      - name: Configure Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
 
-    - name: Update default gems
-      run: gem update --system && gem install uri -v '1.0.3'
+      - name: Build site
+        run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
 
-    - name: Install dependencies
-      run: bundle install
+      - name: Upload artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
 
-    - name: Setup deploy options
-      id: setup
-      run: |
-        git config --global user.name "GitHub Action"
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        if [[ ${GITHUB_REF} = refs/pull/*/merge ]]; then
-          echo "SRC_BRANCH=${GITHUB_HEAD_REF}" >> $GITHUB_OUTPUT
-          echo "NO_PUSH=--no-push" >> $GITHUB_OUTPUT
-        elif [[ ${GITHUB_REF} = refs/heads/* ]]; then
-          echo "SRC_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
-        fi
-        echo "DEPLOY_BRANCH=gh-pages" >> $GITHUB_OUTPUT
-
-    - name: Deploy website 
-      run:  yes | bash bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
-                    --src ${{ steps.setup.outputs.SRC_BRANCH }} 
-                    --deploy ${{ steps.setup.outputs.DEPLOY_BRANCH }}
+  # Pull requests run the build above as a check, but never publish.
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

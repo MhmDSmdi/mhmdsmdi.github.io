@@ -1,8 +1,10 @@
 ---
-layout: cv
-permalink: /assets/pdf/cv.pdf
+layout: page
+permalink: /cv/
 title: Curriculum vitae
 nav: true
 nav_order: 3
-cv_pdf: cv.pdf
+redirect: /assets/pdf/cv.pdf
 ---
+
+<p>Taking you to <a href="{{ '/assets/pdf/cv.pdf' | relative_url }}">my CV</a>. If nothing happens, click the link.</p>

@@ -49,20 +49,20 @@
   
     // Image Pairs for Object Movement
     const imagePairsMovement = [
-      { input: "static/images/movement/1_0.png", output: "static/images/movement/1_1.png" },
-      { input: "static/images/movement/3_0.png", output: "static/images/movement/3_1.png" },
-      { input: "static/images/movement/2_0.png", output: "static/images/movement/2_1.png" },
-      { input: "static/images/movement/4_0.png", output: "static/images/movement/4_1.png" },
-      { input: "static/images/movement/5_0.png", output: "static/images/movement/5_1.png" },
+      { input: "static/images/movement/1_0.webp", output: "static/images/movement/1_1.webp" },
+      { input: "static/images/movement/3_0.webp", output: "static/images/movement/3_1.webp" },
+      { input: "static/images/movement/2_0.webp", output: "static/images/movement/2_1.webp" },
+      { input: "static/images/movement/4_0.webp", output: "static/images/movement/4_1.webp" },
+      { input: "static/images/movement/5_0.webp", output: "static/images/movement/5_1.webp" },
     ];
   
     // Image Pairs for Resizing
     const imagePairsResizing = [
-      { input: "static/images/resizing/1_0.png", enlarge: "static/images/resizing/1_1.png", shrink: "static/images/resizing/1_2.png" },
-      { input: "static/images/resizing/2_0.png", enlarge: "static/images/resizing/2_1.png", shrink: "static/images/resizing/2_2.png" },
-      { input: "static/images/resizing/4_0.png", enlarge: "static/images/resizing/4_1.png", shrink: "static/images/resizing/4_2.png" },
-      { input: "static/images/resizing/3_0.png", enlarge: "static/images/resizing/3_1.png", shrink: "static/images/resizing/3_2.png" },
-      { input: "static/images/resizing/5_0.png", enlarge: "static/images/resizing/5_1.png", shrink: "static/images/resizing/5_2.png" },
+      { input: "static/images/resizing/1_0.webp", enlarge: "static/images/resizing/1_1.webp", shrink: "static/images/resizing/1_2.webp" },
+      { input: "static/images/resizing/2_0.webp", enlarge: "static/images/resizing/2_1.webp", shrink: "static/images/resizing/2_2.webp" },
+      { input: "static/images/resizing/4_0.webp", enlarge: "static/images/resizing/4_1.webp", shrink: "static/images/resizing/4_2.webp" },
+      { input: "static/images/resizing/3_0.webp", enlarge: "static/images/resizing/3_1.webp", shrink: "static/images/resizing/3_2.webp" },
+      { input: "static/images/resizing/5_0.webp", enlarge: "static/images/resizing/5_1.webp", shrink: "static/images/resizing/5_2.webp" },
     ];
   
     // Create Image Grid
@@ -268,7 +268,7 @@
     <!-- Centered Image and Caption -->
     <div class="columns is-centered">
       <figure style="width: 800px; margin: auto; background-color: white;">
-        <img src="static/images/demo.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
+        <img loading="lazy" decoding="async" src="static/images/demo.webp" height="1093" width="2000" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
         <figcaption class="content has-text-justified">
           Our method efficiently performs complex image editing tasks such as object movement, resizing, and pasting in just <strong>4 steps</strong> by composing and applying multiple functions simultaneously. Key functions include object removal (\(f_{OR}\)), edge enhancement (\(f_{EE}\)), and harmonization (\(f_{HR}\)), each applied exclusively to specified mask regions for precise edits. The source image \(I\) is omitted from function arguments for simplicity in the demo visualization.
         </figcaption>
@@ -318,7 +318,7 @@
 
     <!-- Centered Image -->
     <figure style="margin: auto; background-color: white;">
-      <img src="static/images/overview.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
+      <img loading="lazy" decoding="async" src="static/images/overview.webp" height="680" width="2000" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
     </figure>
 
     <!-- Side by Side Content -->
@@ -358,10 +358,10 @@
     <div class="columns is-centered">
       <figure style="width: 800px; margin: 0; padding: 0;">
         <h2 class="title is-6" style="margin-bottom: 5px;">Complex Task 1: Object Movement</h2>
-        <img src="static/images/comparison_results1.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin-bottom: 15px;">
+        <img loading="lazy" decoding="async" src="static/images/comparison_results1.webp" height="624" width="2000" alt="Overview Image" style="display: block; width: 100%; height: auto; margin-bottom: 15px;">
         
         <h2 class="title is-6" style="margin-bottom: 5px;">Complex Task 2: Object Placement</h2>
-        <img src="static/images/comparison_results2.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin-bottom: 15px;">
+        <img loading="lazy" decoding="async" src="static/images/comparison_results2.webp" height="728" width="2000" alt="Overview Image" style="display: block; width: 100%; height: auto; margin-bottom: 15px;">
         
         <figcaption class="content has-text-justified" style="margin-top: 15px;">
           Qualitative and visual comparison between our approach and baseline methods for object placement, repositioning, and pasting tasks. Our method demonstrates superior performance by composing functions such as object removal, harmonization, and edge enhancement. FunEditor seamlessly pastes objects from a reference image into a target image while ensuring proper integration and realistic appearance.
@@ -388,7 +388,7 @@
     </div>
     <div class="columns is-centered" style="margin-bottom: 20px;">
       <figure style="width: 800px; margin: auto;">
-        <img src="static/images/quantitative_comp1.png" alt="Results Table 1" style="width: 100%; height: auto;">
+        <img loading="lazy" decoding="async" width="1591" height="281" src="static/images/quantitative_comp1.webp" alt="Results Table 1" style="width: 100%; height: auto;">
       </figure>
     </div>
 
@@ -398,7 +398,7 @@
     </div>
     <div class="columns is-centered" style="margin-bottom: 20px;">
       <figure style="width: 800px; margin: auto;">
-        <img src="static/images/quantitative_comp2.png" alt="Results Table 2" style="width: 100%; height: auto;">
+        <img loading="lazy" decoding="async" width="1586" height="277" src="static/images/quantitative_comp2.webp" alt="Results Table 2" style="width: 100%; height: auto;">
       </figure>
     </div>
 
@@ -425,7 +425,7 @@
     <!-- Centered Image and Caption -->
     <div class="columns is-centered">
       <figure style="width: 600px; margin: auto;">
-        <img src="static/images/efficiency_comp.png" height="400" width="800" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
+        <img loading="lazy" decoding="async" src="static/images/efficiency_comp.webp" height="284" width="864" alt="Overview Image" style="display: block; width: 100%; height: auto; margin: 0;">
         <figcaption class="content has-text-justified">
           Efficiency is compared in terms of the number of function evaluations (NFEs) and latency (seconds).
           Latency is measured as the average wall-clock time for editing one image over 10 runs on a single Nvidia V100 (32GB) GPU.
