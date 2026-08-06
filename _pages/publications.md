@@ -10,8 +10,12 @@ nav_order: 1
 <!-- _pages/publications.md -->
 <div class="publications">
 
+{%- comment -%}
+  Each entry carries its own year in the left gutter, so the per-year headings
+  that used to sit here would just repeat it. Looping over `years` in
+  descending order is what puts the list in reverse chronological order.
+{%- endcomment -%}
 {%- for y in page.years %}
-  <h2 class="year">{{y}}</h2>
   {% bibliography -f papers -q @*[year={{y}}]* %}
 {% endfor %}
 

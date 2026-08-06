@@ -492,85 +492,130 @@ footer.sticky-bottom {
     margin-top: 0;
 
     li {
-      margin-bottom: 1rem;
-      .preview {
-        width: 100%;
-        min-width: 80px;
-        max-width: 200px;
+      display: flex;
+      gap: 1.375rem;
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--global-divider-color);
+
+      &:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
       }
-      .abbr {
-        height: 2rem;
-        margin-bottom: 0.5rem;
-        abbr {
-          display: inline-block;
-          background-color: var(--global-theme-color);
-          padding-left: 1rem;
-          padding-right: 1rem;
-          a {
-            color: white;
-            &:hover {
-              text-decoration: none;
-            }
-          }
-        }
-        .award {
-          color: var(--global-theme-color) !important;
-          border: 1px solid var(--global-theme-color);
-        }
+
+      // Year sits in a narrow gutter, in tabular figures so the digits align
+      // down the column regardless of which numerals appear.
+      .pub-year {
+        flex: 0 0 2.75rem;
+        padding-top: 0.14rem;
+        font-size: 0.8125rem;
+        line-height: 1.55;
+        color: var(--global-text-color-light);
+        font-variant-numeric: tabular-nums;
       }
-      .title {
-        font-weight: bolder;
+
+      .pub-body {
+        flex: 1 1 auto;
+        min-width: 0;
       }
-      .author {
+
+      .pub-title {
+        display: block;
+        font-size: 1.0625rem;
+        font-weight: 500;
+        line-height: 1.4;
+        letter-spacing: -0.006em;
+        color: var(--global-text-color);
+      }
+      a.pub-title:hover {
+        color: var(--global-theme-color);
+        text-decoration: none;
+      }
+
+      .pub-authors {
+        margin-top: 0.3rem;
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: var(--global-text-color-light);
+
         a {
+          color: var(--global-text-color-light);
           border-bottom: 1px dashed var(--global-theme-color);
           &:hover {
-              border-bottom-style: solid;
-              text-decoration: none;
+            color: var(--global-theme-color);
+            border-bottom-style: solid;
+            text-decoration: none;
           }
         }
+        // The author's own name: weight and colour instead of an underline.
         > em {
-          border-bottom: 1px solid;
           font-style: normal;
+          font-weight: 500;
+          color: var(--global-text-color);
         }
         > span.more-authors {
           color: var(--global-text-color-light);
           border-bottom: 1px dashed var(--global-text-color-light);
           cursor: pointer;
           &:hover {
-              color: var(--global-text-color);
-              border-bottom: 1px dashed var(--global-text-color);
+            color: var(--global-text-color);
+            border-bottom: 1px dashed var(--global-text-color);
           }
         }
       }
-      .links {
-        a.btn {
-          color: var(--global-text-color);
-          border: 1px solid var(--global-text-color);
-          padding-left: 1rem;
-          padding-right: 1rem;
-          padding-top: 0.25rem;
-          padding-bottom: 0.25rem;
-          &:hover {
-            color: var(--global-theme-color);
-            border-color: var(--global-theme-color);
+
+      .pub-venue {
+        margin-top: 0.12rem;
+        font-size: 0.8125rem;
+        line-height: 1.5;
+        font-style: italic;
+        color: var(--global-text-color-light);
+      }
+
+      .pub-note {
+        font-size: 0.8125rem;
+        line-height: 1.5;
+        color: var(--global-text-color-light);
+      }
+
+      .pub-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem 0.35rem;
+        margin-top: 0.6rem;
+
+        a {
+          font-size: 0.75rem;
+          font-weight: 500;
+          line-height: 1.5;
+          letter-spacing: 0.01em;
+          padding: 0.2rem 0.5rem;
+          border-radius: 3px;
+          cursor: pointer;
+          color: var(--global-theme-color);
+          background-color: var(--global-tint-color);
+          transition: background-color 0.12s ease, color 0.12s ease;
+
+          &:hover,
+          &:focus-visible {
+            color: var(--global-bg-color);
+            background-color: var(--global-theme-color);
+            text-decoration: none;
           }
         }
       }
+
       .hidden {
         font-size: 0.875rem;
         max-height: 0px;
         overflow: hidden;
         text-align: justify;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
         transition: all 0.15s ease;
 
         p {
-          line-height: 1.4em;
-          margin: 10px;
+          line-height: 1.5em;
+          margin: 0.75rem 0 0;
         }
         pre {
           font-size: 1em;
@@ -580,17 +625,24 @@ footer.sticky-bottom {
       }
       .hidden.open {
         max-height: 100em;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
         transition: all 0.15s ease;
       }
       div.abstract.hidden {
-        border: dashed 1px var(--global-bg-color);
+        border: 0;
       }
-      div.abstract.hidden.open {
-        border-color: var(--global-text-color);
+    }
+
+    // On narrow screens the gutter costs too much width, so the year moves
+    // above the title instead.
+    @media (max-width: 576px) {
+      li {
+        flex-direction: column;
+        gap: 0;
+      }
+      li .pub-year {
+        flex: none;
+        padding-top: 0;
+        margin-bottom: 0.15rem;
       }
     }
   }
