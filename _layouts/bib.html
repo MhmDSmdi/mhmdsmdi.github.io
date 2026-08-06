@@ -61,9 +61,17 @@
       {%- endfor -%}
     {%- endif -%}
 
+    {%- comment -%}
+      Two authors read "A and B"; three or more take the serial comma,
+      "A, B, and C". The old rule emitted "A, and B" for a pair.
+    {%- endcomment -%}
     {%- if forloop.length > 1 -%}
-      {%- if forloop.first == false -%},&nbsp;{%- endif -%}
-      {%- if forloop.last and author_array_limit == author_array_size -%}and&nbsp;{%- endif -%}
+      {%- if forloop.first == false -%}
+        {%- if forloop.last and author_array_limit == author_array_size -%}
+          {%- if forloop.length > 2 -%},{%- endif -%}&nbsp;and&nbsp;
+        {%- else -%},&nbsp;
+        {%- endif -%}
+      {%- endif -%}
     {%- endif -%}
     {%- if author_is_self -%}
       <em>{{ author.first }} {{ author.last }}</em>
