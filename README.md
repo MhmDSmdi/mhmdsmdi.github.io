@@ -8,7 +8,16 @@ GitHub Actions using GitHub Pages' native deployment.
 
 ## Running it locally
 
-Requires Ruby (3.1+) and ImageMagick.
+Requires **Ruby 3.1+** and ImageMagick. Note that macOS ships Ruby 2.6, which is
+too old — install a newer one with `brew install ruby`, `rbenv`, or `mise`.
+
+On macOS, this checks everything and installs the gems for you:
+
+```bash
+bash bootstrap-macos.sh
+```
+
+Otherwise, by hand:
 
 ```bash
 bundle install
