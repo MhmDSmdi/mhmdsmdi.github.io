@@ -28,7 +28,7 @@ if command -v ruby >/dev/null 2>&1; then
   if [ "$rmaj" -gt 3 ] || { [ "$rmaj" -eq 3 ] && [ "$rmin" -ge 1 ]; }; then
     ok "ruby $rv  ($(command -v ruby))"
   else
-    bad "ruby $rv is too old — Jekyll needs >= 3.1"
+    bad "ruby $rv is too old - Jekyll needs >= 3.1"
     hint "$(command -v ruby)"
     need_ruby=1; fail=1
   fi
@@ -63,7 +63,7 @@ if [ "$need_ruby" = 1 ]; then
   fi
   echo
   echo "  Then re-run this script."
-  echo "  ${DIM}Do NOT 'sudo gem install' into the system Ruby — that is the 2.6 one.${OFF}"
+  echo "  ${DIM}Do NOT 'sudo gem install' into the system Ruby - that is the 2.6 one.${OFF}"
 fi
 
 # --------------------------------------------------------- ImageMagick -----
@@ -72,7 +72,7 @@ fi
 if command -v magick >/dev/null 2>&1 || command -v convert >/dev/null 2>&1; then
   ok "imagemagick ($(command -v magick || command -v convert))"
 else
-  bad "imagemagick not found — jekyll-imagemagick needs it"
+  bad "imagemagick not found - jekyll-imagemagick needs it"
   hint "brew install imagemagick"
   fail=1
 fi
@@ -83,7 +83,7 @@ fi
 if command -v node >/dev/null 2>&1; then
   ok "node $(node -v)  ${DIM}(ExecJS will use this; mini_racer stays out of the way)${OFF}"
 else
-  warn "no node — fine, but mini_racer will have to build V8 to minify assets"
+  warn "no node - fine, but mini_racer will have to build V8 to minify assets"
   hint "brew install node   # optional, makes the install more robust"
 fi
 
@@ -120,7 +120,7 @@ else
   bad "bundle install failed"
   echo
   echo "  Most likely culprit is ${YLW}mini_racer${OFF} (it compiles V8)."
-  echo "  It is only needed to minify the built HTML/CSS/JS — worth maybe 15 KB"
+  echo "  It is only needed to minify the built HTML/CSS/JS - worth maybe 15 KB"
   echo "  on a site this size. To drop it and move on:"
   echo
   echo "      # remove these two lines from the Gemfile:"

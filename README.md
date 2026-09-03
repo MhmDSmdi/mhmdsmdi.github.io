@@ -1,6 +1,6 @@
 # mhmdsmdi.github.io
 
-Personal homepage of **Mohammadreza Samadi** — live at <https://mhmdsmdi.github.io>.
+Personal homepage of **Mohammadreza Samadi** - live at <https://mhmdsmdi.github.io>.
 
 Built with [Jekyll](https://jekyllrb.com/) on a trimmed-down fork of the
 [al-folio](https://github.com/alshedivat/al-folio) theme, and published by
@@ -9,7 +9,7 @@ GitHub Actions using GitHub Pages' native deployment.
 ## Running it locally
 
 Requires **Ruby 3.1+** and ImageMagick. Note that macOS ships Ruby 2.6, which is
-too old — install a newer one with `brew install ruby`, `rbenv`, or `mise`.
+too old - install a newer one with `brew install ruby`, `rbenv`, or `mise`.
 
 On macOS, this checks everything and installs the gems for you:
 
@@ -45,9 +45,9 @@ Then open <http://localhost:4000>.
 
 Append a BibTeX entry to `_bibliography/papers.bib`. Useful non-standard keys:
 
-- `selected={true}` — also show it on the homepage
-- `preview={filename.png}` — thumbnail from `assets/img/publication_preview/`
-- `abbr`, `arxiv`, `pdf`, `code`, `website` — render as links/badges
+- `selected={true}` - also show it on the homepage
+- `preview={filename.png}` - thumbnail from `assets/img/publication_preview/`
+- `abbr`, `arxiv`, `pdf`, `code`, `website` - render as links/badges
 
 If you add a publication from a year not already listed, add that year to the
 `years:` list in `_pages/publications.md`.
@@ -58,7 +58,7 @@ Push to `master`. The workflow in `.github/workflows/deploy.yml` builds the
 site and hands it to GitHub Pages. Pull requests run the same build as a check
 without publishing.
 
-> **One-time setup:** *Settings → Pages → Build and deployment → Source* must be
+> **One-time setup:** *Settings -> Pages -> Build and deployment -> Source* must be
 > set to **GitHub Actions**.
 
 ## Licence
