@@ -24,9 +24,44 @@
   {%- endif -%}
 {%- endif -%}
 
-<div class="pub-year">{{ entry.year }}</div>
+{%- comment -%}
+  The thumbnail links to the project page when there is one, otherwise to
+  wherever the title points.
+{%- endcomment -%}
+{%- assign thumb_url = title_url -%}
+{%- if entry.website -%}
+  {%- assign thumb_url = entry.website | relative_url -%}
+{%- endif -%}
+
+{%- if entry.preview %}
+<div class="pub-thumb">
+  {%- if thumb_url %}<a href="{{ thumb_url }}" tabindex="-1" aria-hidden="true">{% endif -%}
+  <img src="{{ entry.preview | prepend: '/assets/img/publication_preview/' | relative_url }}" alt="" loading="lazy" decoding="async">
+  {%- if thumb_url %}</a>{% endif %}
+</div>
+{%- endif %}
 
 <div id="{{ entry.key }}" class="pub-body">
+
+  {%- comment -%}
+    Badges: `abbr` is the short venue and year ("AAAI 2025"); `award` is an
+    optional highlight such as "Oral" or "Best Paper". An arXiv-only entry
+    gets the muted preprint style.
+  {%- endcomment -%}
+  {%- if entry.abbr or entry.award %}
+  <div class="pub-badges">
+    {%- if entry.abbr %}
+      {%- if entry.journal contains 'arXiv preprint' %}
+    <span class="pub-badge preprint">{{ entry.abbr }}</span>
+      {%- else %}
+    <span class="pub-badge">{{ entry.abbr }}</span>
+      {%- endif %}
+    {%- endif %}
+    {%- if entry.award %}
+    <span class="pub-badge award">{{ entry.award }}</span>
+    {%- endif %}
+  </div>
+  {%- endif %}
 
   <!-- Title -->
   {%- if title_url %}
@@ -141,56 +176,56 @@
   <!-- Links -->
   <div class="pub-links">
     {%- if entry.abstract %}
-    <a class="abstract" role="button" tabindex="0">Abstract</a>
+    <a class="abstract" role="button" tabindex="0"><i class="fas fa-align-left"></i>Abstract</a>
     {%- endif %}
     {%- if entry.arxiv %}
-    <a href="https://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>
+    <a href="https://arxiv.org/abs/{{ entry.arxiv }}"><i class="ai ai-arxiv"></i>arXiv</a>
     {%- endif %}
     {%- if entry.doi %}
-    <a href="https://doi.org/{{ entry.doi }}">DOI</a>
+    <a href="https://doi.org/{{ entry.doi }}"><i class="ai ai-doi"></i>DOI</a>
     {%- endif %}
     {%- if entry.html %}
-    <a href="{{ entry.html }}">Publisher</a>
+    <a href="{{ entry.html }}"><i class="fas fa-book-open"></i>Publisher</a>
     {%- endif %}
     {%- if entry.pdf %}
       {%- if entry.pdf contains '://' %}
-    <a href="{{ entry.pdf }}">PDF</a>
+    <a href="{{ entry.pdf }}"><i class="fas fa-file-pdf"></i>PDF</a>
       {%- else %}
-    <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}">PDF</a>
+    <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}"><i class="fas fa-file-pdf"></i>PDF</a>
       {%- endif %}
     {%- endif %}
     {%- if entry.code %}
-    <a href="{{ entry.code }}">Code</a>
+    <a href="{{ entry.code }}"><i class="fab fa-github"></i>Code</a>
     {%- endif %}
     {%- if entry.website %}
-    <a href="{{ entry.website | relative_url }}">Project</a>
+    <a href="{{ entry.website | relative_url }}"><i class="fas fa-globe"></i>Project</a>
     {%- endif %}
     {%- if entry.supp %}
       {%- if entry.supp contains '://' %}
-    <a href="{{ entry.supp }}">Supplement</a>
+    <a href="{{ entry.supp }}"><i class="fas fa-paperclip"></i>Supplement</a>
       {%- else %}
-    <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}">Supplement</a>
+    <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}"><i class="fas fa-paperclip"></i>Supplement</a>
       {%- endif %}
     {%- endif %}
     {%- if entry.slides %}
       {%- if entry.slides contains '://' %}
-    <a href="{{ entry.slides }}">Slides</a>
+    <a href="{{ entry.slides }}"><i class="fas fa-chalkboard"></i>Slides</a>
       {%- else %}
-    <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}">Slides</a>
+    <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}"><i class="fas fa-chalkboard"></i>Slides</a>
       {%- endif %}
     {%- endif %}
     {%- if entry.poster %}
       {%- if entry.poster contains '://' %}
-    <a href="{{ entry.poster }}">Poster</a>
+    <a href="{{ entry.poster }}"><i class="fas fa-image"></i>Poster</a>
       {%- else %}
-    <a href="{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}">Poster</a>
+    <a href="{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}"><i class="fas fa-image"></i>Poster</a>
       {%- endif %}
     {%- endif %}
     {%- if entry.blog %}
-    <a href="{{ entry.blog }}">Blog</a>
+    <a href="{{ entry.blog }}"><i class="fas fa-pen"></i>Blog</a>
     {%- endif %}
     {%- if entry.bibtex_show %}
-    <a class="bibtex" role="button" tabindex="0">BibTeX</a>
+    <a class="bibtex" role="button" tabindex="0"><i class="fas fa-quote-right"></i>BibTeX</a>
     {%- endif %}
   </div>
 

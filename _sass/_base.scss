@@ -491,6 +491,14 @@ footer.sticky-bottom {
     padding: 0;
     margin-top: 0;
 
+    // The publications page emits one list per year; keep the divider
+    // running across the seams between them.
+    & + ol.bibliography {
+      border-top: 1px solid var(--global-divider-color);
+      padding-top: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
     li {
       display: flex;
       gap: 1.375rem;
@@ -504,20 +512,64 @@ footer.sticky-bottom {
         padding-bottom: 0;
       }
 
-      // Year sits in a narrow gutter, in tabular figures so the digits align
-      // down the column regardless of which numerals appear.
-      .pub-year {
-        flex: 0 0 2.75rem;
-        padding-top: 0.14rem;
-        font-size: 0.8125rem;
-        line-height: 1.55;
-        color: var(--global-text-color-light);
-        font-variant-numeric: tabular-nums;
+      // Preview image on the left, in a fixed 16:10 frame so every entry
+      // lines up regardless of the source figure's shape.
+      .pub-thumb {
+        flex: 0 0 15rem;
+        align-self: flex-start;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        border-radius: 6px;
+        border: 1px solid var(--global-divider-color);
+        background-color: #fff;
+
+        a, img {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        img {
+          object-fit: cover;
+          transition: transform 0.25s ease;
+        }
+        a:hover img {
+          transform: scale(1.03);
+        }
       }
 
       .pub-body {
         flex: 1 1 auto;
         min-width: 0;
+      }
+
+      .pub-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-bottom: 0.35rem;
+      }
+      .pub-badge {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: 0.04em;
+        padding: 0.08rem 0.45rem;
+        border-radius: 4px;
+        color: var(--global-theme-color);
+        background-color: var(--global-tint-color);
+
+        &.preprint {
+          color: var(--global-text-color-light);
+          background-color: var(--global-divider-color);
+        }
+        &.award {
+          color: #a15c00;
+          background-color: rgba(242, 145, 5, 0.14);
+        }
+      }
+      html[data-theme='dark'] & .pub-badge.award {
+        color: #f5b04a;
+        background-color: rgba(242, 145, 5, 0.18);
       }
 
       .pub-title {
@@ -582,25 +634,34 @@ footer.sticky-bottom {
       .pub-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.3rem 0.35rem;
-        margin-top: 0.6rem;
+        gap: 0.35rem;
+        margin-top: 0.65rem;
 
         a {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
           font-size: 0.75rem;
           font-weight: 500;
           line-height: 1.5;
-          letter-spacing: 0.01em;
-          padding: 0.2rem 0.5rem;
-          border-radius: 3px;
+          padding: 0.22rem 0.7rem;
+          border-radius: 999px;
           cursor: pointer;
-          color: var(--global-theme-color);
-          background-color: var(--global-tint-color);
-          transition: background-color 0.12s ease, color 0.12s ease;
+          color: var(--global-text-color);
+          border: 1px solid var(--global-divider-color);
+          transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+
+          i {
+            font-size: 0.8rem;
+            color: var(--global-theme-color);
+            transition: color 0.12s ease;
+          }
 
           &:hover,
           &:focus-visible {
-            color: var(--global-bg-color);
-            background-color: var(--global-theme-color);
+            color: var(--global-theme-color);
+            border-color: var(--global-theme-color);
+            background-color: var(--global-tint-color);
             text-decoration: none;
           }
         }
@@ -632,17 +693,15 @@ footer.sticky-bottom {
       }
     }
 
-    // On narrow screens the gutter costs too much width, so the year moves
-    // above the title instead.
+    // On narrow screens the preview stacks above the text at full width.
     @media (max-width: 576px) {
       li {
         flex-direction: column;
-        gap: 0;
+        gap: 0.75rem;
       }
-      li .pub-year {
+      li .pub-thumb {
         flex: none;
-        padding-top: 0;
-        margin-bottom: 0.15rem;
+        width: 100%;
       }
     }
   }
